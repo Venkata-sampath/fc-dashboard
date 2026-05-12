@@ -81,7 +81,7 @@ async function loadHistory() {
   let data;
   try {
     const res = await fetch(
-      `https://ble-dashboard-worker.satyaramsl72.workers.dev/device/${mac}`
+      `https://fc-dashboard-worker.satyaramsl72.workers.dev/device/${mac}`
     );
     data = await res.json();
   } catch (e) {

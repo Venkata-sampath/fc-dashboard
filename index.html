@@ -215,8 +215,19 @@
     card.style.maxWidth = '1200px';
     card.innerHTML = `
       <div class="d-flex justify-content-between align-items-center mb-2">
-        <span class="device-name fs-6">${mac}</span>
-        <span class="timestamp text-secondary">${toDateTime(latest.received_at)}</span>
+        <span class="device-name fs-6">
+          ${mac}
+        </span>
+        <div class="d-flex align-items-center gap-2">
+          <button
+            class="btn btn-sm btn-outline-primary"
+            onclick="openHistoryPage('${mac}')">
+            📅 History
+          </button>
+          <span class="timestamp text-secondary">
+            ${toDateTime(latest.received_at)}
+          </span>
+        </div>
       </div>
       <div class="d-flex align-items-center gap-4 flex-wrap mb-3">${statsHTML}</div>
       ${chartsHTML}
@@ -277,6 +288,12 @@
     await searchDevice();
   }
   
+  function openHistoryPage(mac) {
+
+    window.location.href =
+      `history.html?mac=${mac}`;
+  }
+  
   setInterval(() => {
 
     if (currentMac) {
@@ -284,7 +301,7 @@
       refreshCurrentDevice();
     }
 
-  }, 5000);
+  }, 60000);
   </script>
 </body>
 </html>

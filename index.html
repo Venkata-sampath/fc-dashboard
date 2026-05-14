@@ -411,7 +411,7 @@ async function searchDevice() {
 
   let data;
   try {
-    const res = await fetch(`https://fc-dashboard-worker-2.satyaramsl72.workers.dev/device/${mac}`);
+    const res = await fetch(`https://fc-ingest-worker.satyaramsl72.workers.dev/device/${mac}`);
     data = await res.json();
   } catch (e) {
     alert('Network error fetching device data.');

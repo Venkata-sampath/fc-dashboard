@@ -889,11 +889,11 @@ async function downloadPDF() {
 
   let y = 38;
 
-  // TEMP GRAPH
+ // TEMP GRAPH
 
-  if (tempChartInst) {
+if (tempChartInst) {
 
-    const tempCanvas =
+  const tempCanvas =
     tempChartInst.getRenderedCanvas({
 
       pixelRatio: 3,
@@ -905,71 +905,66 @@ async function downloadPDF() {
       height: 500
     });
 
-    const tempImg =
-      tempCanvas.toDataURL("image/png");
+  const tempImg =
+    tempCanvas.toDataURL("image/png");
 
-    doc.setFontSize(12);
+  doc.setFontSize(12);
 
-    doc.setTextColor(52, 96, 147);
+  doc.setTextColor(52, 96, 147);
 
-    doc.text("Temperature Graph", 14, y);
+  doc.text("Temperature Graph", 14, y);
 
-    y += 4;
+  y += 4;
 
-    doc.addImage(
-      tempImg,
-      "JPEG",
-      12,
-      y,
-      180,
-      45,
-      undefined,
-      'FAST'
-    );
+  doc.addImage(
+    tempImg,
+    "PNG",
+    12,
+    y,
+    186,
+    78
+  );
 
-    y += 54;
-  }
+  y += 88;
+}
+ // HUM GRAPH
 
-  // HUM GRAPH
+if (humChartInst) {
 
-  if (humChartInst) {
+  const humCanvas =
+    humChartInst.getRenderedCanvas({
 
-    const humCanvas =
-      humChartInst.getRenderedCanvas({
+      pixelRatio: 3,
 
-        pixelRatio: 3,
+      backgroundColor: '#ffffff',
 
-        backgroundColor: '#ffffff',
-        
-        width: 1200,
+      width: 1200,
 
-        height: 500
-      });
+      height: 500
+    });
 
-    const humImg =
-      humCanvas.toDataURL("image/png");
+  const humImg =
+    humCanvas.toDataURL("image/png");
 
-    doc.setFontSize(12);
+  doc.setFontSize(12);
 
-    doc.setTextColor(52, 96, 147);
+  doc.setTextColor(52, 96, 147);
 
-    doc.text("Humidity Graph", 14, y);
+  doc.text("Humidity Graph", 14, y);
 
-    y += 4;
+  y += 4;
 
-    doc.addImage(
-      humImg,
-      "JPEG",
-      12,
-      y,
-      180,
-      45,
-      undefined,
-      'FAST'
-    );
+  doc.addImage(
+    humImg,
+    "PNG",
+    12,
+    y,
+    186,
+    78
+  );
 
-    y += 58;
-  }
+  y += 92;
+}
 
   // TABLE
 
